@@ -1,0 +1,29 @@
+{
+  "name": "xclock",
+  "author": "kjy00302",
+  "version": "1.0.0",
+  "keywords": ["pebble-app"],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "xclock",
+    "uuid": "5ed10bb3-86bd-4854-a54f-2c33415a71a9",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk",
+      "diorite"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "messageKeys": [
+      "dummy"
+    ],
+    "resources": {
+      "media": []
+    }
+  }
+}
