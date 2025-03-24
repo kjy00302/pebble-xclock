@@ -94,6 +94,10 @@ static void prv_window_unload(Window *window) {
   layer_destroy(s_face_layer);
 }
 
+static void tick_handler(struct tm *tick_time, TimeUnits units_changed){
+  layer_mark_dirty(s_face_layer);
+}
+
 static void prv_init(void) {
   s_window = window_create();
   window_set_window_handlers(s_window, (WindowHandlers) {
@@ -102,6 +106,7 @@ static void prv_init(void) {
   });
   const bool animated = true;
   window_stack_push(s_window, animated);
+  tick_timer_service_subscribe(SECOND_UNIT, tick_handler);
 }
 
 static void prv_deinit(void) {
