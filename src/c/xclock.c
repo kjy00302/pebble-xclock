@@ -54,8 +54,8 @@ static void draw_clock_face(GContext *ctx) {
 }
 
 static void draw_hand(GContext *ctx, int32_t tick_units, int32_t size) {
-  int16_t outer_x = (size * 144 * 45 / 10000);
-  int16_t inner_y = (HAND_WIDTH_FRACT * 144 * 45 / 10000);
+  int16_t outer_x = (size * 144 * 45 / 10000) + 1;
+  int16_t inner_y = (HAND_WIDTH_FRACT * 144 * 45 / 10000) + 1;
   s_hand_points[0].x = 0;
   s_hand_points[0].y = -outer_x;
   s_hand_points[1].x = inner_y;
@@ -63,7 +63,7 @@ static void draw_hand(GContext *ctx, int32_t tick_units, int32_t size) {
   s_hand_points[2].x = -inner_y;
   s_hand_points[2].y = inner_y;
   gpath_rotate_to(s_hand_path, tick_units * TRIG_MAX_ANGLE / 3600);
-  gpath_draw_outline(ctx, s_hand_path);
+  //gpath_draw_outline(ctx, s_hand_path);
   gpath_draw_filled(ctx, s_hand_path);
 }
 
