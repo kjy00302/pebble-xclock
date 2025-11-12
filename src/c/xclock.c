@@ -110,7 +110,7 @@ static void prv_init(void) {
   });
   const bool animated = true;
   window_stack_push(s_window, animated);
-  tick_timer_service_subscribe(SECOND_UNIT, tick_handler);
+  tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
 }
 
 static void prv_deinit(void) {
