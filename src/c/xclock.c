@@ -6,6 +6,10 @@ const int MINUTE_HAND_FRACT = 70;
 const int HOUR_HAND_FRACT = 40;
 const int HAND_WIDTH_FRACT = 7;
 
+const int WIDTH = PBL_DISPLAY_WIDTH;
+const int HEIGHT = PBL_DISPLAY_HEIGHT;
+const int SCALE = 45;
+
 static Window *s_window;
 static Layer *s_face_layer;
 
@@ -23,11 +27,11 @@ static void clock_angle(int32_t tick_units, int32_t *sin, int32_t *cos) {
 }
 
 static int16_t x_coord(int32_t x) {
-  return ((x * 144 * 45 / 100) / TRIG_MAX_RATIO) + 72;
+  return ((x * WIDTH * SCALE / 100) / TRIG_MAX_RATIO) + (WIDTH / 2);
 }
 
 static int16_t y_coord(int32_t y) {
-  return ((y * 144 * 45 / 100) / TRIG_MAX_RATIO) + 84;
+  return ((y * WIDTH * SCALE / 100) / TRIG_MAX_RATIO) + (HEIGHT / 2);
 }
 
 static void render_rotate(GPoint *out, int32_t x, int32_t y, int32_t s, int32_t c) {
@@ -54,8 +58,8 @@ static void draw_clock_face(GContext *ctx) {
 }
 
 static void draw_hand(GContext *ctx, int32_t tick_units, int32_t size) {
-  int16_t outer_x = (size * 144 * 45 / 10000) + 1;
-  int16_t inner_y = (HAND_WIDTH_FRACT * 144 * 45 / 10000) + 1;
+  int16_t outer_x = (size * WIDTH * SCALE / 10000) + 1;
+  int16_t inner_y = (HAND_WIDTH_FRACT * WIDTH * SCALE / 10000) + 1;
   s_hand_points[0].x = 0;
   s_hand_points[0].y = -outer_x;
   s_hand_points[1].x = inner_y;
